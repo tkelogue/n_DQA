@@ -1,0 +1,25 @@
+{
+  "name": "dfa",
+  "version": "1.0.0",
+  "description": "Data File Analyzer (DFA) is a tool to help with a quick QA of tabular data file (csv, excel or json). ",
+  "main": "index.js",
+  "type":"module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "dataframe",
+    "quality analysis",
+    "QA",
+    "missing data",
+    "descriptive stats",
+    "data distribution"
+  ],
+  "author": "Keke T <iot.kte@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "danfojs-node": "^1.1.2",
+    "dataframe-js": "^1.4.4",
+    "open": "^10.0.3"
+  }
+}
