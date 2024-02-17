@@ -1,0 +1,239 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>EDA for CSV or Excel Data File</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-rows justify-center m-2 sm:m-5 md:m-2 mt-0 space-x-6">
+	<div class="w-auto absolute left-8 right-8 md:left-16 md:right-16 ">
+		<h1 class="text-pretty text-center text-xl font-extrabold tracking-tight text-sky-500 md:text-3xl">Résultats du test de qualité des données du fichier</h1>
+		<div class="bg-gray-50">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:space-x-5">
+                <div class="mt-5 p-2 sm:p-5 w-full lg:p-10 max-h-[700px] shadow-2xl">
+                    <div id="box_file" class="display" width="100%">
+                        <div class="flex flex-col">
+                            <h1 class="font-bold text-sky-500">Description du fichier</h1>
+                            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                                    <div class="overflow-hidden">
+                                        <table class="min-w-full text-left text-sm font-light">
+                                            <tbody>
+                                                <tr class="border-b dark:border-neutral-500">
+                                                    <td class="whitespace-nowrap px-6 py-4 font-medium">DQA Fonction</td>
+                                                    <td class="whitespace-nowrap px-6 py-4">{description.get('DQA_fonction')}</td>
+                                                </tr>
+                                                <tr class="border-b dark:border-neutral-500">
+                                                    <td class="whitespace-nowrap px-6 py-4 font-medium">Format</td>
+                                                    <td class="whitespace-nowrap px-6 py-4">{description.get('ext')}</td>
+                                                </tr>
+                                                <tr class="border-b dark:border-neutral-500">
+                                                    <td class="whitespace-nowrap px-6 py-4 font-medium">Fichier</td>
+                                                    <td class="whitespace-nowrap px-6 py-4">{description.get('fichier')}</td>
+                                                </tr>
+                                                <tr class="border-b dark:border-neutral-500">
+                                                    <td class="whitespace-nowrap px-6 py-4 font-medium">Nom de la feuille (si Excel)</td>
+                                                    <td class="whitespace-nowrap px-6 py-4">{description.get('Sheet_Name')}</td>
+                                                </tr>
+                                                <tr class="border-b dark:border-neutral-500">
+                                                    <td class="whitespace-nowrap px-6 py-4 font-medium">Code du schéma (schema id)</td>
+                                                    <td class="whitespace-nowrap px-6 py-4">{description.get('schema_id')}</td>
+                                                </tr>
+                                                <tr class="border-b dark:border-neutral-500">
+                                                    <td class="whitespace-nowrap px-6 py-4 font-medium">Début d''exécution</td>
+                                                    <td class="whitespace-nowrap px-6 py-4">{description.get('exe_time').get('debut')}</td>
+                                                </tr>
+                                                <tr class="border-b dark:border-neutral-500">
+                                                    <td class="whitespace-nowrap px-6 py-4 font-medium">Fin d'exécution</td>
+                                                    <td class="whitespace-nowrap px-6 py-4">{description.get('exe_time').get('fin')}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="box_size" class="mt-5 p-2 sm:p-5 w-full lg:p-10 max-h-[700px] shadow-2xl">
+                    <h1 class="font-bold text-sky-500">Schéma de données et volumétrie</h1>
+                    <div class="mt-5 grid grid-cols-2 gap-5">
+                        <div class="display" width="100%">
+                            <div class="max-w-sm w-40 h-32 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                <a href="#">
+                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">35</h5>
+                                </a>
+                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Colonnes espérées</p>
+                            </div>
+                            <div class="max-w-sm mt-5 w-40 h-32 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                <a href="#">
+                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">5</h5>
+                                </a>
+                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Colonnes requises</p>
+                            </div>
+                        </div>
+                        <div class="display" width="100%">
+                            <div class="max-w-sm w-40 h-32 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                <a href="#">
+                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">33</h5>
+                                </a>
+                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Colonnes détectées</p>
+                            </div>
+                            <div class="max-w-sm mt-5 w-40 h-32 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                <a href="#">
+                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">765 981</h5>
+                                </a>
+                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lignes détectées</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="box_missing" class="mt-5 p-2 sm:p-5 w-full lg:p-10 max-h-[700px] shadow-2xl">
+                    <h1 class="font-bold text-sky-500">Complétude ou données manquantes</h1>
+                    <div class="mt-5 grid grid-cols-2 gap-5">
+                        <div class="display" width="100%">
+                            <div class="max-w-sm w-40 h-32 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                <a href="#">
+                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">2</h5>
+                                </a>
+                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Colonnes non détectées</p>
+                            </div>
+                            <div class="max-w-sm mt-5 w-40 h-32 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                <a href="#">
+                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">1</h5>
+                                </a>
+                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Colonnes vides</p>
+                            </div>
+                            <div class="max-w-sm mt-5 w-40 h-32 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                <a href="#">
+                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">5000</h5>
+                                </a>
+                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Valeurs manquantes</p>
+                            </div>
+                        </div>
+                        <div class="display" width="100%">
+                            <div class="max-w-sm w-40 h-32 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                <a href="#">
+                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">1</h5>
+                                </a>
+                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Colonnes inattendues</p>
+                            </div>
+                            <div class="max-w-sm mt-5 w-40 h-32 p-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                <a href="#">
+                                    <h5 class="mb-2 text-2xl font-bold pl-3 tracking-tight text-gray-900 dark:text-white">1</h5>
+                                </a>
+                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Col. requises pleines</p>
+                            </div>
+                            <div class="max-w-sm mt-5 w-40 h-32 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                <a href="#">
+                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">3 436</h5>
+                                </a>
+                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lignes incomplètes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div></div>
+                <div id="box_unicite" class="mt-5 p-2 sm:p-5 w-full lg:p-10 max-h-[700px] shadow-2xl">
+                    <h1 class="font-bold text-sky-500">Unicité et fréquence </h1>
+                    <div class="mt-5 grid grid-cols-2 gap-5">
+                        <div class="display" width="100%">
+                            <div class="max-w-sm w-40 h-32 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                <a href="#">
+                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">3/5 cols</h5>
+                                </a>
+                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Test d'unicité</p>
+                            </div>
+                            <div class="max-w-sm mt-5 w-40 h-32 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                <a href="#">
+                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">520</h5>
+                                </a>
+                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lignes redondantes</p>
+                            </div>
+                        </div>
+                        <div class="display" width="100%">
+                            <div class="max-w-sm  w-40 h-32 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                <a href="#">
+                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Voir</h5>
+                                </a>
+                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Distributions de Fréquence</p>
+                            </div>
+                            <div class="max-w-sm mt-5 w-40 h-32 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                <a href="#">
+                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">761 021</h5>
+                                </a>
+                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lignes uniques</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="box_coherent" class="mt-5 p-2 sm:p-5 w-full lg:p-10 max-h-[700px] shadow-2xl">
+                    <h1 class="font-bold text-sky-500">Validité et conformité</h1>
+                    <div class="mt-5 grid grid-cols-2 gap-5">
+                        <div class="display" width="100%">
+                            <div class="max-w-sm w-40 h-32 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                <a href="#">
+                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">26/33</h5>
+                                </a>
+                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Type de données test</p>
+                            </div>
+                            <div class="max-w-sm mt-5 w-40 h-32 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                <a href="#">
+                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">3/5</h5>
+                                </a>
+                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Pattern test</p>
+                            </div>
+                        </div>
+                        <div class="display" width="100%">
+                            <div class="max-w-sm  w-40 h-32 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                <a href="#">
+                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">5/5</h5>
+                                </a>
+                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Min - Max test</p>
+                            </div>
+                            <div class="max-w-sm mt-5 w-40 h-32 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                <a href="#">
+                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">761 541</h5>
+                                </a>
+                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lignes valides</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="mt-5 p-2 sm:p-5 w-full lg:p-10 max-h-[600px] shadow-2xl">
+                    <table id="tbl_col" class="display oveflow-y-auto" width="100%"></table>
+                </div>
+                <div class="mt-5 p-2 w-full md:col-span-2 lg:col-span-1 lg:p-10 max-h-[600px] shadow-2xl">
+                    <table id="tbl_dup" class="display oveflow-y-auto" width="100%"></table>
+                </div>
+            </div>
+
+			<div id="details" class="flex place-content-center m-5 p-5">
+				<button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded ">
+					Détails
+				</button>
+			</div>
+			<div id='colbox' class="grid grid-cols-1 md:grid-cols-2 md:space-x-5 hidden"></div>
+		</div>
+	</div>
+
+
+</body>
+</html>
